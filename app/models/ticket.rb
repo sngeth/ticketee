@@ -5,3 +5,4 @@ class Ticket < ActiveRecord::Base
             length: { minimum: 10 }
 
 end
+  
