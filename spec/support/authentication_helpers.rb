@@ -5,7 +5,7 @@ module AuthenticationHelpers
     fill_in "Password", with: user.password
     click_button 'Sign in'
     expect(page).to have_content("Signed in successfully.")
-  end 
+  end
 
   def define_permission!(user, action, thing)
     Permission.create!(user: user,
