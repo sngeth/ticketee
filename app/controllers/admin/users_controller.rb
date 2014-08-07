@@ -13,7 +13,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new(params)
 
     if @user.save
-      flash[:notice] = "User has been created"
+      flash[:notice] = "User has been created."
       redirect_to admin_users_path
     else
       flash.now[:alert] = "User has not been created."
@@ -23,6 +23,9 @@ class Admin::UsersController < Admin::BaseController
 
     private
       def user_params
-        params.require(:user).permit(:name, :password, :password_confirmation)
+        params.require(:user).permit(:name, 
+          :password, 
+          :password_confirmation, 
+          :admin)
       end
 end
