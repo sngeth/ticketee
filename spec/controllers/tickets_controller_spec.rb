@@ -44,5 +44,18 @@ describe TicketsController do
       post :create, project_id: project.id
       cannot_create_tickets!
     end
+
+    it "cannot edit a ticket without permission" do
+      get :edit, { project_id: project.id, id: ticket.id }
+      cannot_update_tickets!
+    end
+
+    it "cannot update a ticket without permission" do
+      put :update, { project_id: project.id,
+        id: ticket.id,ticket: {} }
+      cannot_update_tickets!
+    end
   end
+
+
 end
