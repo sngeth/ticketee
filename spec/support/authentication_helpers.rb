@@ -6,13 +6,6 @@ module AuthenticationHelpers
     click_button 'Sign in'
     expect(page).to have_content("Signed in successfully.")
   end
-
-  def define_permission!(user, action, thing)
-    Permission.create!(user: user,
-    action: action,
-    thing: thing)
-  end
-
 end
 
 RSpec.configure do |c|
@@ -24,6 +17,7 @@ module AuthHelpers
     session[:user_id] = user.id
   end
 end
+
 RSpec.configure do |c|
   c.include AuthHelpers, type: :controller
 end

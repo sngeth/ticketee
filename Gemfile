@@ -45,6 +45,8 @@ end
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'cancan', '~> 1.6.10'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
