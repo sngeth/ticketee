@@ -24,6 +24,8 @@ Ticketee::Application.routes.draw do
       put "permissions", to: "permissions#set", as: "set_permissions"
     end
   end
+
+  resources :files
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

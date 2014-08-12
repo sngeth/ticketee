@@ -1,19 +1,20 @@
 require 'spec_helper'
+
 describe TicketsController do
-    
   let(:user) { FactoryGirl.create(:user) }
   let(:project) { FactoryGirl.create(:project) }
   let(:ticket) { FactoryGirl.create(:ticket,
-  project: project,
-  user: user) }
+                                    project: project,
+                                    user: user) }
 
   context "standard users" do
     it "cannot access a ticket for a project" do
       sign_in(user)
       get :show, :id => ticket.id, :project_id => project.id
+
       expect(response).to redirect_to(root_path)
       expect(flash[:alert]).to eql("The project you were looking " +
-      "for could not be found.")
+                                   "for could not be found.")
     end
   end
 
@@ -52,17 +53,19 @@ describe TicketsController do
 
     it "cannot update a ticket without permission" do
       put :update, { project_id: project.id,
-        id: ticket.id,ticket: {} }
+                     id: ticket.id,
+                     ticket: {}
+                   }
       cannot_update_tickets!
     end
 
     it "cannot delete a ticket without permission" do
       delete :destroy, { project_id: project.id, id: ticket.id }
+
       expect(response).to redirect_to(project)
       message = "You cannot delete tickets from this project."
       expect(flash[:alert]).to eql(message)
     end
+
   end
-
-
 end
