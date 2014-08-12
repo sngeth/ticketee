@@ -10,9 +10,4 @@ class Asset < ActiveRecord::Base
       self.content_type = asset.file.content_type
     end
   end
-
-  def store_dir
-    Rails.root + "uploasds/#{model.class.to_s.underscore}/" + \
-    "#{mounted_as}/#{model.id}"
-  end
 end
