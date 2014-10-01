@@ -18,7 +18,11 @@ Ticketee::Application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :states
+    resources :states do
+      member do
+        get :make_default
+      end
+    end
   end
   
   namespace :admin do
@@ -29,6 +33,8 @@ Ticketee::Application.routes.draw do
       put "permissions", to: "permissions#set", as: "set_permissions"
     end
   end
+
+
 
   resources :files
   # The priority is based upon order of creation: first created -> highest priority.
