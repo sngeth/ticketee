@@ -18,6 +18,7 @@ Ticketee::Application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :states
   end
   
   namespace :admin do
